@@ -8,4 +8,12 @@ public class Ninja {
         this.weight = weight;
         this.speed = speed;
     }
+
+    public float getSpeed() {
+        return this.speed;
+    }
+    
+    public float getWeight() {
+        return this.weight;
+    }
 }
