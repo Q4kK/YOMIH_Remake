@@ -48,9 +48,9 @@ public class MainGame extends BasicGame {
 		floor_collision = new CollisionBox(0, resY - resY / 4 + 1, resX, 1);
 
 		// define spawn position
-		player1SpawnPos[0] = (float) (resX / 2) + 60;
+		player1SpawnPos[0] = (float) (resX / 2) - 60;
 		player1SpawnPos[1] = floor.getMaxY() - 80;
-		player2SpawnPos[0] = (float) (resX / 2) - 60;
+		player2SpawnPos[0] = (float) (resX / 2) + 60;
 		player2SpawnPos[1] = floor.getMaxY() - 80;
 
 		// define initial collision boxes (70, 70) are arbitrary values and probably
@@ -73,12 +73,15 @@ public class MainGame extends BasicGame {
 
 		// draw initial sprite
 		player1Ninja.getSubImage(0, 0).draw(player1SpawnPos[0], player1SpawnPos[1]);
-		g.drawString("1", player1SpawnPos[0], player1SpawnPos[1]);
 		player2Ninja.getSubImage(0, 0).draw(player2SpawnPos[0], player2SpawnPos[1]);
 
 		// draw collision boxes
 		g.setColor(Color.white);
 		g.draw(player1_cBox.getCollisionBox());
+
+		// dbug
+		g.drawString("player 1", player1_cBox.getX(), player1_cBox.getY() - 50);
+
 		g.draw(player2_cBox.getCollisionBox());
 
 	}
