@@ -5,13 +5,13 @@ import org.newdawn.slick.geom.Shape;
 
 public class CollisionBox {
 
-	int x;
-	int y;
+	float x;
+	float y;
 	int width;
 	int height;
 	private Shape collisionBox;
 
-	public CollisionBox(int x, int y, int width, int height) {
+	public CollisionBox(float x, float y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -23,12 +23,16 @@ public class CollisionBox {
 		return this.collisionBox;
 	}
 
+	public void update() {
+		this.collisionBox = new CollisionBox(x, y, width, height).getCollisionBox();
+	}
+
 	public void setX(float x) {
-		this.x = (int) x;
+		this.x = x;
 	}
 
 	public void setY(float y) {
-		this.y = (int) y;
+		this.y = y;
 	}
 
 	public void setWidth(float width) {
@@ -39,11 +43,11 @@ public class CollisionBox {
 		this.height = (int) height;
 	}
 
-	public int getX() {
+	public float getX() {
 		return this.x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return this.y;
 	}
 
