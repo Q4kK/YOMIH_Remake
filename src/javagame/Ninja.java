@@ -6,8 +6,6 @@ import org.newdawn.slick.SpriteSheet;
 
 public class Ninja {
 
-	private final int Left = 0;
-	private final int Right = 1;
 	private int x, y;
 
 	private int health;
@@ -21,6 +19,10 @@ public class Ninja {
 		this.image = new Image(image);
 		this.x = x;
 		this.y = y;
+	}
+
+	public int getX() {
+		return this.x;
 	}
 
 	public void setHealth(int health) {
@@ -59,23 +61,39 @@ public class Ninja {
 		return new SpriteSheet(this.image, 128, 128).getSubImage(x, y);
 	}
 
-	public Image getImage(String image, int x, int y) throws SlickException {
-		return new SpriteSheet(image, 128, 128).getSubImage(x, y);
-	}
-
 	public void draw() {
 		image.draw(x, y);
 	}
 
-	public void update(int delta) {
-		move();
+	public void flip() {
+		this.image = image.getFlippedCopy(true, false);
 	}
 
-	public void move() {
-		if (direction == Left)
-			x -= 1;
-		else if (direction == Right)
-			x += 1;
+	public void update() {
+		draw();
+	}
+
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+
+	public void move(int amount) {
+		if (direction == 0)
+			x -= amount;
+		else if (direction == 1)
+			x += amount;
+	}
+
+	public void setX(float pos) {
+		this.x = (int) pos;
+	}
+
+	public void setY(float pos) {
+		this.y = (int) pos;
+	}
+
+	public int getY() {
+		return this.y;
 	}
 
 }
